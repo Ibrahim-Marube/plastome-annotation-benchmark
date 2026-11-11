@@ -28,6 +28,7 @@ AA3 = {"Ala": "A", "Arg": "R", "Asn": "N", "Asp": "D", "Cys": "C", "Gln": "Q",
        "Trp": "W", "Tyr": "Y", "Val": "V"}
 COMP = str.maketrans("acgtn", "tgcan")
 RRN = re.compile(r"^rrn(\d+(?:\.\d+)?)[sS]$")
+LONG = re.compile(r"^tRNA-([A-Za-z]+) \(([ACGUTacgut]{3})\)$")
 FEAT = re.compile(r"^ {5}(\S+)\s+(\S.*)$")
 GENE = re.compile(r'/gene="([^"]*)"')
 
@@ -122,6 +123,15 @@ def main(inp, outp, rep):
             continue
         if b["key"] != "tRNA":
             continue
+        lg = LONG.match(name)
+        if lg and lg.group(1) in AA3:
+            letter = "fM" if lg.group(1) == "fMet" else AA3[lg.group(1)]
+            new = "trn%s-%s" % (letter, lg.group(2).upper().replace("T", "U"))
+            rename(b, name, new)
+            if n > 0 and blocks[n - 1]["key"] == "gene" and gene_of(blocks[n - 1]) == name:
+                rename(blocks[n - 1], name, new)
+            report.append(("tRNA", name, new, b["loc"], "converted from long name", ""))
+            continue
         if not name.startswith("trn"):
             report.append(("tRNA", name, name, b["loc"], "WARNING: not a trn name", ""))
             continue
@@ -134,14 +144,15 @@ def main(inp, outp, rep):
             continue
         ac, status = find_anticodon(mat, aa1)
         if ac is None:
-            report.append(("tRNA", name, name, b["loc"], "FAILED: no anticodon loop", ""))
+            report.append(("tRNA", name, name, b["loc"], "FAILED: no anticodon loop", mat))
             continue
         new = "%s-%s" % (name, ac.upper().replace("T", "U"))
         rename(b, name, new)
         if n > 0 and blocks[n - 1]["key"] == "gene" and gene_of(blocks[n - 1]) == name:
             rename(blocks[n - 1], name, new)
         report.append(("tRNA", name, new, b["loc"], status,
-                       "%s->%s" % (revcomp(ac).upper(), CODON.get(revcomp(ac)))))
+                       "%s->%s" % (revcomp(ac).upper(), CODON.get(revcomp(ac)))
+                       + (" " + mat if status != "ok" else "")))
 
     open(outp, "w").write("\n".join(lines))
     with open(rep, "w") as r:
