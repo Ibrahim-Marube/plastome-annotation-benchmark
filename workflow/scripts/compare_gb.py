@@ -6,6 +6,8 @@ A feature is identified by (type, strand, 3' end). For each feature type we repo
   found      : same strand and same 3' end (stop codon / last base)
   exact      : found, and the 5' end (start) also agrees
   structure  : exact, and every exon boundary agrees (so introns are right too)
+  near       : not found, but a one-to-one match of the same type and strand whose
+               start and stop are both within TOL bases (a boundary slip, not a miss)
 
 Usage: compare_gb.py truth.gb predicted.gb [out_prefix]
 """
@@ -14,6 +16,23 @@ import sys
 from collections import defaultdict
 
 TYPES = ("CDS", "tRNA", "rRNA")
+TOL = 5
+
+
+def near_matches(truth_keys, pred_keys, truth, pred):
+    """Count one-to-one matches among unmatched genes: same type and strand,
+    start and stop each within TOL bases."""
+    used, n = set(), 0
+    for t in sorted(truth_keys):
+        for p in sorted(pred_keys):
+            if p in used or t[0] != p[0] or t[1] != p[1]:
+                continue
+            if (abs(truth[t]["stop"] - pred[p]["stop"]) <= TOL
+                    and abs(truth[t]["start"] - pred[p]["start"]) <= TOL):
+                used.add(p)
+                n += 1
+                break
+    return n
 
 
 def split_top(s):
@@ -111,7 +130,7 @@ def main():
         sys.exit(f"ERROR: {len(pred)} predicted / {len(truth)} truth features; "
                  f"refusing to score an unannotated file ({pred_path})")
     print(f"{'type':5s} {'truth':>6s} {'pred':>6s} {'found':>6s} {'exact':>6s} {'struct':>6s}   "
-          f"sens(found)  prec(found)")
+          f"sens(found)  prec(found)  {'near':>5s}  sens(+-{TOL})  prec(+-{TOL})")
     rows = []
     for t in TYPES + ("ALL",):
         tk = {k for k in truth if t == "ALL" or k[0] == t}
@@ -121,8 +140,11 @@ def main():
         struct = {k for k in exact if truth[k]["exons"] == pred[k]["exons"]}
         sens = len(found) / len(tk) if tk else float("nan")
         prec = len(found) / len(pk) if pk else float("nan")
+        near = near_matches(tk - found, pk - found, truth, pred)
+        sens_n = (len(found) + near) / len(tk) if tk else float("nan")
+        prec_n = (len(found) + near) / len(pk) if pk else float("nan")
         print(f"{t:5s} {len(tk):6d} {len(pk):6d} {len(found):6d} {len(exact):6d} {len(struct):6d}   "
-              f"{sens:10.3f}  {prec:10.3f}")
+              f"{sens:10.3f}  {prec:10.3f}  {near:5d}  {sens_n:10.3f}  {prec_n:10.3f}")
         rows.append((t, len(tk), len(pk), len(found), len(exact), len(struct)))
     for name, keys, src in (("missed", truth.keys() - pred.keys(), truth),
                             ("extra", pred.keys() - truth.keys(), pred)):
