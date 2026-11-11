@@ -1,0 +1,52 @@
+feature	old	new	location	status	codon->aa
+tRNA	trnH	trnH-GUG	complement(48..121)	ok	CAC->H
+tRNA	trnK	trnK-UUU	complement(join(1780..1814,4442..4478))	ok	AAA->K
+tRNA	trnM	trnM-CAU	complement(9408..9480)	ok	ATG->M
+tRNA	trnV	trnV-UAC	join(9658..9695,10295..10329)	ok	GTA->V
+tRNA	trnF	trnF-GAA	complement(13031..13103)	ok	TTC->F
+tRNA	trnT	trnT-UGU	14857..14929	ok	ACA->T
+tRNA	trnS	trnS-GGA	complement(16063..16150)	ok	TCC->S
+tRNA	trnM	trnM-CAU	24093..24166	ok	ATG->M
+tRNA	trnG	trnG-GCC	complement(24306..24376)	ok	GGC->G
+tRNA	trnS	trnS-UGA	25728..25816	ok	TCA->S
+tRNA	trnT	trnT-GGU	complement(29739..29810)	ok	ACC->T
+tRNA	trnE	trnE-UUC	30426..30498	ok	GAA->E
+tRNA	trnY	trnY-GUA	30559..30642	ok	TAC->Y
+tRNA	trnD	trnD-GUC	31105..31178	ok	GAC->D
+tRNA	trnC	trnC-GCA	complement(33599..33669)	ok	TGC->C
+tRNA	trnR	trnR-UCU	complement(51182..51253)	ok	AGA->R
+tRNA	trnS	trnS-GCU	52945..53031	ok	AGC->S
+tRNA	trnQ	trnQ-UUG	54540..54611	ok	CAA->Q
+tRNA	trnW	trnW-CCA	complement(63596..63669)	ok	TGG->W
+tRNA	trnP	trnP-UGG	complement(63847..63920)	ok	CCA->P
+tRNA	trnI	trnI-CAU	complement(84258..84331)	ok	ATG->M
+tRNA	trnL	trnL-CAA	complement(91893..91973)	ok	TTG->L
+tRNA	trnV	trnV-GAC	97955..98026	ok	GTC->V
+gene	rrn16s	rrn16	98249..99739	rrn suffix removed	
+rRNA	rrn16s	rrn16	98249..99739	rrn suffix removed	
+tRNA	trnI	trnI-GAU	join(100024..100060,100782..100816)	ok	ATC->I
+tRNA	trnA	trnA-UGC	join(100880..100917,101724..101758)	ok	GCA->A
+gene	rrn23s	rrn23	101922..104737	rrn suffix removed	
+rRNA	rrn23s	rrn23	101922..104737	rrn suffix removed	
+gene	rrn4.5s	rrn4.5	104836..104939	rrn suffix removed	
+rRNA	rrn4.5s	rrn4.5	104836..104939	rrn suffix removed	
+gene	rrn5s	rrn5	105158..105278	rrn suffix removed	
+rRNA	rrn5s	rrn5	105158..105278	rrn suffix removed	
+tRNA	trnR	trnR-ACG	105489..105562	ok	CGT->R
+tRNA	trnN	trnN-GUU	complement(106147..106218)	ok	AAC->N
+tRNA	trnL	trnL-UAG	110565..110644	ok	CTA->L
+tRNA	trnN	trnN-GUU	126238..126309	ok	AAC->N
+tRNA	trnR	trnR-ACG	complement(126894..126967)	ok	CGT->R
+gene	rrn5s	rrn5	complement(127178..127298)	rrn suffix removed	
+rRNA	rrn5s	rrn5	complement(127178..127298)	rrn suffix removed	
+gene	rrn4.5s	rrn4.5	complement(127517..127620)	rrn suffix removed	
+rRNA	rrn4.5s	rrn4.5	complement(127517..127620)	rrn suffix removed	
+gene	rrn23s	rrn23	complement(127719..130534)	rrn suffix removed	
+rRNA	rrn23s	rrn23	complement(127719..130534)	rrn suffix removed	
+tRNA	trnA	trnA-UGC	complement(join(130698..130732,131539..131576))	ok	GCA->A
+tRNA	trnI	trnI-GAU	complement(join(131640..131674,132396..132432))	ok	ATC->I
+gene	rrn16s	rrn16	complement(132717..134207)	rrn suffix removed	
+rRNA	rrn16s	rrn16	complement(132717..134207)	rrn suffix removed	
+tRNA	trnV	trnV-GAC	complement(134430..134501)	ok	GTC->V
+tRNA	trnL	trnL-CAA	140483..140563	ok	TTG->L
+tRNA	trnI	trnI-CAU	148125..148198	ok	ATG->M

@@ -1,0 +1,8 @@
+type	strand	name	start	stop
+CDS	-	petL	60980	60885
+CDS	-	psaI	66456	66352
+CDS	-	ycf68	25358	25104
+tRNA	+	trnC-GCA	90806	90879
+tRNA	-	trnD-GUC	93360	93287
+tRNA	+	trnF-GAA	111185	111256
+tRNA	+	trnN-GUU	19417	19489

@@ -1,0 +1,17 @@
+Medicago_truncatula
+Warning: rps16 has not been annotated due to low similarity with reference!
+Warning: clpP (positive two-intron PCG) lost intron 1!
+Warning: psbL (positive no-intron PCG) has non-canonical start codon!
+Warning: rpl22 (positive no-intron PCG) need to be checked due to query coverage per annotated PCG less than 0.5!
+Warning: rps12+2 (positive one-intron PCG) lost intron!
+Warning: trnA (negative one-intron PCG) intron-exon boundary need to be checked!
+Warning: trnG (positive one-intron PCG) has non-canonical start codon and intron-exon boundary need to be checked!
+Warning: trnI (negative one-intron PCG) has non-canonical start codon and intron-exon boundary need to be checked!
+Warning: trnK (positive one-intron PCG) has non-canonical start codon and intron-exon boundary need to be checked!
+Warning: trnL (positive one-intron PCG) intron-exon boundary need to be checked!
+Warning: trnV (negative one-intron PCG) has non-canonical start codon and intron-exon boundary need to be checked!
+Total number of genes in the reference plastome(s): 102.
+Total number of genes annotated in the target plastome: 84.
+All gene names from the reference plastome(s) that were not annotated in the target plastome:
+trnfM	trnF	trnT	trnP	trnQ	trnM	trnE	trnH	trnN	rrn4.5S	trnY	rps16	trnC	trnS	rrn23S	trnW	trnD	rrn16S	
+

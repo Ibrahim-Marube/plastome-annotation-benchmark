@@ -1,0 +1,4 @@
+type	strand	name	start	stop
+CDS	+	rpl22	42083	42169
+CDS	+	rps12	56869	56982
+CDS	-	ycf4	66217	65543

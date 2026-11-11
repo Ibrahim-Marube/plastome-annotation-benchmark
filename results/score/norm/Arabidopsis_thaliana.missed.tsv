@@ -1,0 +1,8 @@
+type	strand	name	start	stop
+CDS	-	ycf68	25358	25104
+rRNA	-	5S ribosomal RNA	20475	20355
+tRNA	+	trnC-GCA	90806	90879
+tRNA	+	trnF-GAA	111185	111256
+tRNA	+	trnN-GUU	19417	19489
+tRNA	-	trnS-GCU	71071	70985
+tRNA	-	trnT-UGU	109403	109331

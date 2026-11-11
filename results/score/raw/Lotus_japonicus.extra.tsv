@@ -1,0 +1,8 @@
+type	strand	name	start	stop
+CDS	-	trnA	24775	23753
+CDS	-	trnI	25578	24796
+CDS	+	trnK	119630	122245
+CDS	+	trnS	71449	72324
+CDS	+	trnT	110613	111045
+CDS	-	trnV	114596	113948
+CDS	-	ycf4	66217	65543

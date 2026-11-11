@@ -1,0 +1,45 @@
+feature	old	new	location	status	codon->aa
+tRNA	tRNA-His (GUG)	trnH-GUG	complement(1..75)	converted from long name	
+tRNA	tRNA-Lys (UUU)	trnK-UUU	complement(join(1850..1884,4482..4518))	converted from long name	
+tRNA	tRNA-Gln (UUG)	trnQ-UUG	complement(8606..8677)	converted from long name	
+tRNA	tRNA-Ser (GCU)	trnS-GCU	complement(9862..9949)	converted from long name	
+tRNA	tRNA-Gly (UCC)	trnG-UCC	join(11694..11717,12497..12544)	converted from long name	
+tRNA	tRNA-Arg (UCU)	trnR-UCU	12704..12775	converted from long name	
+tRNA	tRNA-Cys (GCA)	trnC-GCA	31502..31572	converted from long name	
+tRNA	tRNA-Asp (GUC)	trnD-GUC	complement(34749..34822)	converted from long name	
+tRNA	tRNA-Tyr (GUA)	trnY-GUA	complement(35369..35452)	converted from long name	
+tRNA	tRNA-Glu (UUC)	trnE-UUC	complement(35523..35595)	converted from long name	
+tRNA	tRNA-Thr (GGU)	trnT-GGU	36414..36485	converted from long name	
+tRNA	tRNA-Ser (UGA)	trnS-UGA	complement(40475..40567)	converted from long name	
+tRNA	tRNA-Gly (GCC)	trnG-GCC	41490..41560	converted from long name	
+tRNA	tRNA-fMet (CAU)	trnfM-CAU	complement(41750..41823)	converted from long name	
+tRNA	tRNA-Ser (GGA)	trnS-GGA	50217..50303	converted from long name	
+tRNA	tRNA-Thr (UGU)	trnT-UGU	complement(51630..51702)	converted from long name	
+tRNA	tRNA-Leu (UAA)	trnL-UAA	join(52177..52211,52686..52735)	converted from long name	
+tRNA	tRNA-Phe (GAA)	trnF-GAA	53111..53183	converted from long name	
+tRNA	tRNA-Val (UAC)	trnV-UAC	complement(57212..57866)	converted from long name	
+tRNA	tRNA-Met (CAU)	trnM-CAU	58041..58112	converted from long name	
+tRNA	tRNA-Trp (CCA)	trnW-CCA	complement(72881..72954)	converted from long name	
+tRNA	tRNA-Pro (UGG)	trnP-UGG	complement(73124..73197)	converted from long name	
+tRNA	tRNA-Leu (CAA)	trnL-CAA	complement(101014..101094)	converted from long name	
+tRNA	tRNA-Val (GAC)	trnV-GAC	107315..107386	converted from long name	
+gene	rrn16S	rrn16	107614..109103	rrn suffix removed	
+rRNA	rrn16S	rrn16	107614..109103	rrn suffix removed	
+tRNA	tRNA-Ile (GAU)	trnI-GAU	join(109408..109444,110426..110460)	converted from long name	
+tRNA	tRNA-Ala (UGC)	trnA-UGC	join(110519..110556,111358..111392)	converted from long name	
+tRNA	tRNA-Arg (ACG)	trnR-ACG	115143..115216	converted from long name	
+tRNA	tRNA-Asn (GUU)	trnN-GUU	complement(115750..115821)	converted from long name	
+tRNA	tRNA-Leu (UAG)	trnL-UAG	121665..121744	converted from long name	
+tRNA	tRNA-Asn (GUU)	trnN-GUU	137836..137907	converted from long name	
+tRNA	tRNA-Arg (ACG)	trnR-ACG	complement(138441..138514)	converted from long name	
+gene	rrn5S	rrn5	complement(138727..138847)	rrn suffix removed	
+rRNA	rrn5S	rrn5	complement(138727..138847)	rrn suffix removed	
+gene	rrn4.5S	rrn4.5	complement(139091..139193)	rrn suffix removed	
+rRNA	rrn4.5S	rrn4.5	complement(139091..139193)	rrn suffix removed	
+gene	rrn23S	rrn23	complement(139292..142107)	rrn suffix removed	
+rRNA	rrn23S	rrn23	complement(139292..142107)	rrn suffix removed	
+tRNA	tRNA-Ala (UGC)	trnA-UGC	complement(join(142265..142299,143101..143138))	converted from long name	
+tRNA	tRNA-Ile (GAU)	trnI-GAU	complement(join(143197..143231,144213..144249))	converted from long name	
+tRNA	tRNA-Val (GAC)	trnV-GAC	complement(146271..146342)	converted from long name	
+tRNA	tRNA-Leu (CAA)	trnL-CAA	152563..152643	converted from long name	
+tRNA	tRNA-Ile (CAU)	trnI-CAU	160655..160728	converted from long name	

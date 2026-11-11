@@ -1,0 +1,5 @@
+type	strand	name	start	stop
+CDS	-	ycf4	66217	65543
+tRNA	+	trnC-GCA	90806	90876
+tRNA	+	trnF-GAA	111185	111257
+tRNA	+	trnN-GUU	19417	19488

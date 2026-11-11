@@ -1,0 +1,7 @@
+type	strand	name	start	stop
+CDS	-	ycf68	25358	25104
+tRNA	+	trnC-GCA	90806	90879
+tRNA	+	trnF-GAA	111185	111256
+tRNA	+	trnL-UAA	110640	111077
+tRNA	+	trnM-CAU	114765	114837
+tRNA	+	trnN-GUU	19417	19489

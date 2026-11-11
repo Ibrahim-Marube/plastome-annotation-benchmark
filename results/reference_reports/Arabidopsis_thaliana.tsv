@@ -1,0 +1,42 @@
+feature	old	new	location	status	codon->aa
+tRNA	trnH	trnH-GUG	complement(4..76)	ok	CAC->H
+tRNA	trnK	trnK-UUU	complement(join(1717..1751,4311..4347))	ok	AAA->K
+tRNA	trnQ	trnQ-UUG	complement(6616..6687)	ok	CAA->Q
+tRNA	trnS	trnS-CGU	7785..7872	unverified	ACG->T gggaaagagagggattcgaaccctcggtacgattaactcgtacaatggattagcaatccaacgctttagtccactcagccatctctcc
+tRNA	trnG	trnG-UCC	join(8646..8668,9383..9431)	ok	GGA->G
+tRNA	trnR	trnR-UCU	9590..9661	ok	AGA->R
+tRNA	trnC	trnC-GCA	27373..27443	ok	TGC->C
+tRNA	trnD	trnD-GUC	complement(29801..29874)	ok	GAC->D
+tRNA	trnY	trnY-GUA	complement(30323..30406)	ok	TAC->Y
+tRNA	trnE	trnE-UUC	complement(30466..30538)	ok	GAA->E
+tRNA	trnT	trnT-GGU	31369..31440	ok	ACC->T
+tRNA	trnS	trnS-UGA	complement(35312..35403)	ok	TCA->S
+tRNA	trnG	trnG-GCC	36490..36560	ok	GGC->G
+tRNA	trnfM	trnfM-CAU	complement(36704..36777)	ok	ATG->M
+tRNA	trnS	trnS-GGA	44827..44913	ok	TCC->S
+tRNA	trnL	trnL-UAA	join(46894..46928,47441..47490)	ok	TTA->L
+tRNA	trnF	trnF-GAA	48175..48247	ok	TTC->F
+tRNA	trnV	trnV-UAC	complement(join(51199..51233,51833..51871))	ok	GTA->V
+tRNA	trnM	trnM-CAU	52056..52128	ok	ATG->M
+tRNA	trnW	trnW-CCA	complement(66229..66302)	ok	TGG->W
+tRNA	trnP	trnP-UGG	complement(66490..66563)	ok	CCA->P
+tRNA	trnI	trnI-CAU	complement(86312..86385)	ok	ATG->M
+tRNA	trnL	trnL-CAA	complement(94276..94356)	ok	TTG->L
+tRNA	trnV	trnV-GAC	100709..100780	ok	GTC->V
+gene	rrn16S	rrn16	101012..102502	rrn suffix removed	
+rRNA	rrn16S	rrn16	101012..102502	rrn suffix removed	
+tRNA	trnI	trnI-GAU	join(102801..102837,103567..103601)	ok	ATC->I
+tRNA	trnA	trnA-UGC	join(103665..103702,104504..104538)	ok	GCA->A
+gene	rrn23S	rrn23	104691..107500	rrn suffix removed	
+rRNA	rrn23S	rrn23	104691..107500	rrn suffix removed	
+gene	rrn4.5S	rrn4.5	107599..107701	rrn suffix removed	
+rRNA	rrn4.5S	rrn4.5	107599..107701	rrn suffix removed	
+tRNA	trnR	trnR-ACG	108302..108375	ok	CGT->R
+tRNA	trnN	trnN-GUU	complement(109013..109084)	ok	AAC->N
+tRNA	trnL	trnL-UAG	114270..114349	ok	CTA->L
+tRNA	trnN	trnN-GUU	129565..129636	ok	AAC->N
+tRNA	trnR	trnR-ACG	complement(130274..130347)	ok	CGT->R
+tRNA	trnA	trnA-UGC	complement(join(134111..134145,134947..134984))	ok	GCA->A
+tRNA	trnI	trnI-GAU	complement(join(135048..135082,135812..135848))	ok	ATC->I
+tRNA	trnL	trnL-CAA	144293..144373	ok	TTG->L
+tRNA	trnI	trnI-CAU	152264..152337	ok	ATG->M

@@ -1,0 +1,5 @@
+type   truth   pred  found  exact struct   sens(found)  prec(found)   near  sens(+-5)  prec(+-5)
+CDS       76     84     75     65     56        0.987       0.893      0       0.987       0.893
+tRNA      29      1      1      1      1        0.034       1.000      0       0.034       1.000
+rRNA       4      0      0      0      0        0.000         nan      0       0.000         nan
+ALL      109     85     76     66     57        0.697       0.894      0       0.697       0.894
