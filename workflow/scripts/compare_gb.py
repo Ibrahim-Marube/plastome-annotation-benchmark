@@ -107,6 +107,9 @@ def main():
     truth_path, pred_path = sys.argv[1], sys.argv[2]
     prefix = sys.argv[3] if len(sys.argv) > 3 else "comparison"
     truth, pred = to_genes(truth_path, truth=True), to_genes(pred_path)
+    if len(pred) < 10 or len(truth) < 10:
+        sys.exit(f"ERROR: {len(pred)} predicted / {len(truth)} truth features; "
+                 f"refusing to score an unannotated file ({pred_path})")
     print(f"{'type':5s} {'truth':>6s} {'pred':>6s} {'found':>6s} {'exact':>6s} {'struct':>6s}   "
           f"sens(found)  prec(found)")
     rows = []

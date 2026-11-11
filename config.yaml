@@ -1,0 +1,21 @@
+# Plastome annotation benchmark: PGA with references of different relatedness.
+# Accessions: check with  grep -m1 ^VERSION data/genbank/*.gb
+
+pga:
+  repo: https://github.com/quxiaojian/PGA
+  commit: 0683a0e          # version used for all results
+
+# The "answer key": its sequence is the input, its RefSeq annotation is the truth.
+truth:
+  name: Medicago_truncatula
+  accession: NC_003119
+
+# Reference plastomes, ordered from closer to more distant relatives of the target.
+references:
+  Lotus_japonicus: NC_002694
+  Arabidopsis_thaliana: NC_000932
+  Amborella_trichopoda: NC_005086
+
+# PGA is run through run_pga.sh: output with fewer CDS than this is treated as a failed run.
+min_cds: 30
+max_tries: 5

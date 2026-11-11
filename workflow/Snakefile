@@ -1,0 +1,127 @@
+"""Reference-based plastome annotation (PGA) benchmarked against RefSeq.
+
+Run on the cluster:
+    snakemake -s workflow/Snakefile --cores 2 --use-envmodules
+
+For every reference plastome, PGA annotates the Medicago truncatula sequence twice:
+  raw  - the reference exactly as downloaded from RefSeq
+  norm - the reference with gene names rewritten to PGA's naming convention
+Each result is scored against the RefSeq annotation of the same sequence.
+"""
+configfile: "config.yaml"
+
+TRUTH = config["truth"]["name"]
+REFS = list(config["references"])
+VARIANTS = ["raw", "norm"]
+ACCESSION = dict(config["references"])
+ACCESSION[TRUTH] = config["truth"]["accession"]
+BLAST = "bio/BLAST+/2.13.0-gompi-2022a"
+
+
+rule all:
+    input:
+        "results/comparison.md",
+
+
+rule download:
+    """Fetch a GenBank record from NCBI."""
+    output:
+        "data/genbank/{name}.gb",
+    params:
+        acc=lambda w: ACCESSION[w.name],
+    shell:
+        "curl -sSf --retry 5 --retry-delay 10 -o {output} "
+        "'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+        "?db=nuccore&id={params.acc}&rettype=gbwithparts&retmode=text'"
+
+
+rule target_fasta:
+    """The sequence PGA has to annotate (no annotation attached)."""
+    input:
+        f"data/genbank/{TRUTH}.gb",
+    output:
+        f"data/target/{TRUTH}.fasta",
+    shell:
+        "python3 workflow/scripts/gb_to_fasta.py {input} {output}"
+
+
+rule pga_clone:
+    output:
+        "tools/PGA/PGA.pl",
+    params:
+        repo=config["pga"]["repo"],
+        commit=config["pga"]["commit"],
+    shell:
+        "git clone {params.repo} tools/PGA && git -C tools/PGA checkout {params.commit}"
+
+
+rule pga_patch:
+    """PGA builds temp-file names from random characters that include '$'; the shell
+    expands it and about 1 run in 8 silently produces an unannotated file.
+    The patched copy drops '$' from the character list (one line changed)."""
+    input:
+        "tools/PGA/PGA.pl",
+    output:
+        "tools/PGA.patched.pl",
+    shell:
+        "bash workflow/scripts/patch_pga.sh {input} {output}"
+
+
+rule reference_raw:
+    input:
+        "data/genbank/{name}.gb",
+    output:
+        "data/ref/raw/{name}/{name}.gb",
+    shell:
+        "cp {input} {output}"
+
+
+rule reference_norm:
+    """Rename rRNA genes (rrn16S -> rrn16) and tRNA genes (trnQ -> trnQ-UUG)."""
+    input:
+        "data/genbank/{name}.gb",
+    output:
+        gb="data/ref/norm/{name}/{name}.gb",
+        report="results/reference_reports/{name}.tsv",
+    shell:
+        "python3 workflow/scripts/normalize_reference.py {input} {output.gb} {output.report}"
+
+
+rule pga:
+    input:
+        pga="tools/PGA.patched.pl",
+        ref="data/ref/{variant}/{name}/{name}.gb",
+        target=f"data/target/{TRUTH}.fasta",
+    output:
+        gb=f"results/pga/{{variant}}/{{name}}/{TRUTH}.gb",
+    log:
+        "logs/pga_{variant}_{name}.log",
+    envmodules:
+        BLAST,
+    params:
+        min_cds=config["min_cds"],
+        tries=config["max_tries"],
+    shell:
+        "MIN_CDS={params.min_cds} PGA_TRIES={params.tries} "
+        "bash workflow/scripts/run_pga.sh {input.pga} $(dirname {input.ref}) "
+        "{input.target} {output.gb} {log}"
+
+
+rule score:
+    input:
+        truth=f"data/genbank/{TRUTH}.gb",
+        pred=f"results/pga/{{variant}}/{{name}}/{TRUTH}.gb",
+    output:
+        "results/score/{variant}/{name}.txt",
+    shell:
+        "python3 workflow/scripts/compare_gb.py {input.truth} {input.pred} "
+        "results/score/{wildcards.variant}/{wildcards.name} > {output}"
+
+
+rule table:
+    input:
+        expand("results/score/{variant}/{name}.txt", variant=VARIANTS, name=REFS),
+    output:
+        "results/comparison.md",
+    shell:
+        "python3 workflow/scripts/make_table.py {output} {input}"

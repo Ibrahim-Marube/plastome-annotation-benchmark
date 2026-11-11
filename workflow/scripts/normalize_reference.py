@@ -54,15 +54,16 @@ def mature(seq, loc):
 def find_anticodon(m, aa1):
     cands = []
     for s in range(28, min(42, len(m) - 4)):
-        if m[s - 1] == "t" and m[s - 2] in "ct" and m[s + 3] in "ag":
+        # U33 and a purine at position 37 are required; a pyrimidine at 32 is only preferred
+        if m[s - 1] == "t" and m[s + 3] in "ag":
             ac = m[s:s + 3]
             aa = CODON.get(revcomp(ac))
             ok = aa == aa1 or (aa1 == "I" and ac == "cat")  # lysidine tRNA-Ile(CAU)
-            cands.append((not ok, abs(s - 33), ac))
+            cands.append((not ok, m[s - 2] not in "ct", abs(s - 33), ac))
     if not cands:
         return None, "failed"
     cands.sort()
-    bad, _, ac = cands[0]
+    bad, _, _, ac = cands[0]
     return ac, ("unverified" if bad else "ok")
 
 
