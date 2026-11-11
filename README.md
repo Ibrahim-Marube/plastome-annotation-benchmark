@@ -106,8 +106,9 @@ gave results identical to the default; the BLAST+ 2.13.0 module reproduced my fi
 - The +-5 nt tolerance is a choice; strict numbers are reported alongside.
 - tRNA anticodons are inferred from sequence with a heuristic; one case is unresolved.
 - The PGA fix is applied to a local copy and not submitted upstream.
-- The workflow has been run on the cluster starting from already-downloaded data; a
-  from-scratch run (fresh clone, fresh downloads) has not been checked yet.
+- Reproduction was checked on one cluster only: a fresh clone with the committed
+  `results/` removed re-downloaded the data and gave identical score files and
+  comparison table (about 1 minute, 2 cores).
 
 ## Reproduce (on the cluster)
 
